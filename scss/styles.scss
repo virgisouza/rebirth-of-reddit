@@ -1,6 +1,42 @@
-
+@import "./partials/_variables";
+// HTMLelement.style.backgroundImage = `url('${redditdata.data.url}')`
 body {
-  background-color: green;
+  .title {
+    // background-image: url(/assets/header_bg.svg);
+    background-image: url(/assets/logo.svg);
+
+    background-size: 800px 30px;
+  }
+  .menu {
+    background-color: $global-grey;
+    display: block;
+  }
+
+  .content {
+    background-image: url(/assets/bg.jpg);
+  }
+
+  .footer {
+    background-color: $global-grey;
+  }
 }
+
+
+
+//mobile
+@media (min-width: 200px) {
+
+};
+
+//tablet
+@media (min-width: 400px) {
+
+};
+
+//desktop
+@media (min-width: 600px) {
+
+};
+
 
 //image should fill entire area of rectangular box : use background-size "cover"
