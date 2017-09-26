@@ -12,9 +12,10 @@ body {
     display: block;
   }
 
-  .content {
-    background-image: url(/assets/bg.jpg);
-  }
+  // .content {
+  //   background-image: url(/assets/bg.jpg);
+  //   background-size: cover;
+  // }
 
   .footer {
     background-color: $global-grey;
@@ -25,17 +26,26 @@ body {
 
 //mobile
 @media (min-width: 200px) {
-
+ .content {
+  background-image: url(/assets/bg.jpg);
+  background-size: cover;
+  }
 };
 
 //tablet
 @media (min-width: 400px) {
-
+  .content {
+  background-image: url(/assets/bg.jpg);
+  background-size: cover;
+  }
 };
 
 //desktop
 @media (min-width: 600px) {
-
+  .content {
+  background-image: url(/assets/bg.jpg);
+  background-size: cover;
+  }
 };
 
 

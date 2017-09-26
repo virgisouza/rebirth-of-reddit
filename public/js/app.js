@@ -18,17 +18,27 @@ myBoardsMenu.addEventListener('click', function (e) {
     //create new variable to access data.children
     let myBoardsObjData = myBoardsObj.data.children;
 
-
     for (var i = 0; i < myBoardsObjData.length; i++) {
-
 
       console.log(myBoardsObjData[i]);
 
-      let myBoardsContent = document.getElementById('innerContent');
-      myBoardsContent.innerHTML = myBoardsObj[i];
+      //create elements to push data into
+      let contentBox = document.getElementsByClassName('contentBox');
+      let imageBox = document.getElementById('imageBox');
+      let articleTitleBox = document.getElementById('articleTitleBox');
+      let detailsBox = document.getElementById('detailsBox');
+      let textSnipBox = document.getElementById('textSnipBox');
+
+      //set data in inner html
+      imageBox.src = myBoardsObjData[i].data.url;
+      articleTitleBox.innerHTML = myBoardsObjData[i].data.title;
+      detailsBox.innerHTML = myBoardsObjData[i].data.author;
+      textSnipBox.innerHTML = myBoardsObjData[i].data.permalink;
+
+
     }
   });
-  myBoardsReq.open("GET", "http://www.reddit.com/r/Futurology.json");
+  myBoardsReq.open("GET", "http://www.reddit.com/r/aww.json");
   myBoardsReq.send();
 });
 
