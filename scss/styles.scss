@@ -2,49 +2,80 @@
 // HTMLelement.style.backgroundImage = `url('${redditdata.data.url}')`
 body {
   .title {
-    // background-image: url(/assets/header_bg.svg);
+    background-image: url(/assets/header_bg.svg);
     background-image: url(/assets/logo.svg);
-
     background-size: 800px 30px;
   }
   .menu {
     background-color: $global-grey;
-    display: block;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    color: #8994a5;
+
   }
-
-  // .content {
-  //   background-image: url(/assets/bg.jpg);
-  //   background-size: cover;
-  // }
-
   .footer {
     background-color: $global-grey;
+    text-align: center;
+    color: #8994a5;
+    padding: 5px;
   }
 }
 
+#imageBox {
+  height: 200px;
+  width: 200px;
+}
+
+#articleTitleBox {
+  font-family: 'Oswald', sans-serif;
+}
+
+#detailsBox {
+  font-family: 'Oswald', sans-serif;
+}
 
 
 //mobile
 @media (min-width: 200px) {
- .content {
+ #content {
   background-image: url(/assets/bg.jpg);
   background-size: cover;
+  max-width: 400px;
+  height: 800px;
+
+  }
+  #contentBox {
+    background-color: whitespace;
+    display: block;
   }
 };
 
 //tablet
 @media (min-width: 400px) {
-  .content {
+  #content {
   background-image: url(/assets/bg.jpg);
   background-size: cover;
+  max-width: 600px;
+  height: 800px;
+    }
+  #contentBox {
+    background-color: whitespace;
+    display: block;
+
   }
 };
 
 //desktop
 @media (min-width: 600px) {
-  .content {
+  #content {
   background-image: url(/assets/bg.jpg);
   background-size: cover;
+  max-width: 1300px;
+  height: 800px;
+  }
+  #contentBox {
+    background-color: whitespace;
+    display: block;
   }
 };
 
