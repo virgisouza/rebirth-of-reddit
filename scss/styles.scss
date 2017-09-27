@@ -4,7 +4,7 @@ body {
   .title {
     background-image: url(/assets/header_bg.svg);
     background-image: url(/assets/logo.svg);
-    background-size: 800px 30px;
+
   }
   .menu {
     background-color: $global-grey;
@@ -21,10 +21,6 @@ body {
   }
 }
 
-#imageBox {
-  height: 200px;
-  width: 200px;
-}
 
 #articleTitleBox {
   font-family: 'Oswald', sans-serif;
@@ -44,10 +40,24 @@ body {
   height: 800px;
 
   }
-  #contentBox {
-    background-color: whitespace;
+  .contentBox {
+    background-color: white;
+    border-style: solid;
     display: block;
+    margin: auto;
+    height: 400px;
+    width: 300px;
+
+    #textSnipBox {
+      background-color: pink;
+      height: 60px;
+      width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
   }
+
 };
 
 //tablet
@@ -58,10 +68,18 @@ body {
   max-width: 600px;
   height: 800px;
     }
-  #contentBox {
-    background-color: whitespace;
+  .contentBox {
+    border-style: solid;
+    background-color: white;
     display: block;
+    margin: auto;
+    height: 400px;
+    width: 300px;
 
+
+    #textSnipBox {
+      text-overflow: ellipsis;
+    }
   }
 };
 
@@ -73,9 +91,18 @@ body {
   max-width: 1300px;
   height: 800px;
   }
-  #contentBox {
-    background-color: whitespace;
+  .contentBox {
+    border-style: solid;
+    background-color: white;
     display: block;
+    margin: auto;
+    height: 400px;
+    width: 300px;
+
+
+    #textSnipBox {
+      text-overflow: ellipsis;
+    }
   }
 };
 

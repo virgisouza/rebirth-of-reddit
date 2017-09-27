@@ -14,33 +14,47 @@ let myBoardsMenu = document.getElementById('myBoards');
     let myBoardsObjData = myBoardsObj.data.children;
 
     for (var i = 0; i < myBoardsObjData.length; i++) {
-      //create contentBox
-      contentBox();
-      //add info to contentBox
-      imageBox(myBoardsObjData[i].data.url);
-      titleBox(myBoardsObjData[i].data.title);
-      detailsBox(myBoardsObjData[i].data.author);
-      textSnip(myBoardsObjData[i].data.permalink);
+
+      //create content box element
+      let parent = contentBox();
+
+      //creates elements with data in them
+      let imgElem = imageBox(myBoardsObjData[i].data.url);
+      let titleElem = titleBox(myBoardsObjData[i].data.title);
+      let detailsElem = detailsBox(myBoardsObjData[i].data.author);
+      let text = textSnip(myBoardsObjData[i].data.permalink);
+
+      //append elements
+      parent.appendChild(imgElem);
+      parent.appendChild(titleElem);
+      parent.appendChild(detailsElem);
+      parent.appendChild(text);
+
+      //appends parent elem to page
+      document.getElementById('content').appendChild(parent);
 
     }
   });
   myBoardsReq.open("GET", "http://www.reddit.com/r/Turtles.json");
   myBoardsReq.send();
 
-//create content box card function
- function contentBox () {
-  let contentBox = document.createElement('div');
-  contentBox.setAttribute('id', 'contentBox');
-  document.getElementById('content').appendChild(contentBox);
 
+//make content box card function
+function contentBox () {
+  let contentBox = document.createElement('div');
+  contentBox.setAttribute('class', 'contentBox');
+  return contentBox;
 }
+
 
 //create image box function
 function imageBox (url) {
   let imageBox = document.createElement('img');
   imageBox.setAttribute('id', 'imageBox');
   imageBox.src = url;
-  document.getElementById('contentBox').appendChild(imageBox);
+  imageBox.style.height = 400 + 'px';
+
+  return imageBox;
 };
 
 //article Title box function
@@ -48,7 +62,7 @@ function titleBox (title) {
   let articleTitleBox = document.createElement('div');
   articleTitleBox.setAttribute('id', 'articleTitleBox');
   articleTitleBox.innerHTML = title;
-  document.getElementById('contentBox').appendChild(articleTitleBox);
+  return articleTitleBox;
 };
 
 //details Box function
@@ -56,16 +70,16 @@ function detailsBox (author, years, views) {
   let detailsBox = document.createElement('div');
   detailsBox.setAttribute('id', 'detailsBox');
   detailsBox.innerHTML = "by " + author;
-  document.getElementById('contentBox').appendChild(detailsBox);
-}
+  return detailsBox;
+};
 
 //text snippet box function
 function textSnip (permalink) {
   let textSnipBox = document.createElement('div');
   textSnipBox.setAttribute('id', 'textSnipBox');
-  textSnipBox.innerHTML = permalink;
-  document.getElementById('contentBox').appendChild(textSnipBox);
-}
+  textSnipBox.innerHTML = 'http://www.reddit.com' + permalink;
+  return textSnipBox;
+};
 
 
 
