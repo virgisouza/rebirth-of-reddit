@@ -1,5 +1,80 @@
 // When the page loads we need to have the application go out to the API endpoint of your choosing to pull in the current feed via AJAX.
 
+  let myBoardsReq = new XMLHttpRequest();
+  myBoardsReq.addEventListener('load', function () {
+    let myBoardsObj = JSON.parse(this.responseText);
+    let myBoardsObjData = myBoardsObj.data.children;
+
+    for (var i = 0; i < myBoardsObjData.length; i++) {
+      console.log(myBoardsObjData[i].data.url)
+      //create content box element
+      let parent = contentBox();
+
+      //creates elements with data in them
+      let imgElem = imageBox(myBoardsObjData[i].data.url);
+      let titleElem = titleBox(myBoardsObjData[i].data.title);
+      let detailsElem = detailsBox(myBoardsObjData[i].data.author);
+      let text = textSnip(myBoardsObjData[i].data.permalink);
+
+      //append elements
+      parent.appendChild(imgElem);
+      parent.appendChild(titleElem);
+      parent.appendChild(detailsElem);
+      parent.appendChild(text);
+
+      //appends parent elem to page
+      document.getElementById('content').appendChild(parent);
+
+    }
+  });
+  myBoardsReq.open("GET", "http://www.reddit.com/r/Turtles.json");
+  myBoardsReq.send();
+
+//make content box card function
+function contentBox () {
+  let contentBox = document.createElement('div');
+  contentBox.setAttribute('class', 'contentBox');
+  return contentBox;
+}
+
+//create image box function
+function imageBox (url) {
+  if(url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+    let imageBox = document.createElement('img');
+    imageBox.setAttribute('id', 'imageBox');
+    imageBox.src = url;
+    imageBox.style.height = 150 + 'px';
+    imageBox.style.width = 150 + 'px';
+    return imageBox;
+  }
+};
+
+//article Title box function
+function titleBox (title) {
+  let articleTitleBox = document.createElement('div');
+  articleTitleBox.setAttribute('id', 'articleTitleBox');
+  articleTitleBox.innerHTML = title;
+  articleTitleBox.style.height = 30 + 'px';
+  articleTitleBox.style.width = 250 + 'px';
+
+  return articleTitleBox;
+};
+
+//details Box function
+function detailsBox (author, years, views) {
+  let detailsBox = document.createElement('div');
+  detailsBox.setAttribute('id', 'detailsBox');
+  detailsBox.innerHTML = "by " + author;
+  return detailsBox;
+};
+
+//text snippet box function
+function textSnip (permalink) {
+  let textSnipBox = document.createElement('div');
+  textSnipBox.setAttribute('id', 'textSnipBox');
+  textSnipBox.innerHTML = 'http://www.reddit.com' + permalink;
+  return textSnipBox;
+};
 
 // Interaction, Loading Data
 // when "My Boards" is clicked
@@ -8,6 +83,7 @@
 //get 'My Boards' menu item
 let myBoardsMenu = document.getElementById('myBoards');
 
+myBoardsMenu.addEventListener('click', function (event) {
   let myBoardsReq = new XMLHttpRequest();
   myBoardsReq.addEventListener('load', function () {
     let myBoardsObj = JSON.parse(this.responseText);
@@ -35,68 +111,83 @@ let myBoardsMenu = document.getElementById('myBoards');
 
     }
   });
-  myBoardsReq.open("GET", "http://www.reddit.com/r/Turtles.json");
+  myBoardsReq.open("GET", "http://www.reddit.com/r/Aww.json");
   myBoardsReq.send();
 
-
-//make content box card function
-function contentBox () {
-  let contentBox = document.createElement('div');
-  contentBox.setAttribute('class', 'contentBox');
-  return contentBox;
-}
-
-
-//create image box function
-function imageBox (url) {
-  let imageBox = document.createElement('img');
-  imageBox.setAttribute('id', 'imageBox');
-  imageBox.src = url;
-  imageBox.style.height = 400 + 'px';
-
-  return imageBox;
-};
-
-//article Title box function
-function titleBox (title) {
-  let articleTitleBox = document.createElement('div');
-  articleTitleBox.setAttribute('id', 'articleTitleBox');
-  articleTitleBox.innerHTML = title;
-  return articleTitleBox;
-};
-
-//details Box function
-function detailsBox (author, years, views) {
-  let detailsBox = document.createElement('div');
-  detailsBox.setAttribute('id', 'detailsBox');
-  detailsBox.innerHTML = "by " + author;
-  return detailsBox;
-};
-
-//text snippet box function
-function textSnip (permalink) {
-  let textSnipBox = document.createElement('div');
-  textSnipBox.setAttribute('id', 'textSnipBox');
-  textSnipBox.innerHTML = 'http://www.reddit.com' + permalink;
-  return textSnipBox;
-};
-
+})
 
 
 
 // when "Random" is clicked
 // create an xhr get request to http://www.reddit.com/r/ANOTHER_SUBBREDDIT.json
 
+let randomMenu = document.getElementById('random');
+
+let randomReq = new XMLHttpRequest();
+  randomReq.addEventListener('load', function () {
+    let myBoardsObj = JSON.parse(this.responseText);
+    let myBoardsObjData = myBoardsObj.data.children;
+
+    for (var i = 0; i < myBoardsObjData.length; i++) {
+
+      //create content box element
+      let parent = contentBox();
+
+      //creates elements with data in them
+      let imgElem = imageBox(myBoardsObjData[i].data.url);
+      let titleElem = titleBox(myBoardsObjData[i].data.title);
+      let detailsElem = detailsBox(myBoardsObjData[i].data.author);
+      let text = textSnip(myBoardsObjData[i].data.permalink);
+
+      //append elements
+      parent.appendChild(imgElem);
+      parent.appendChild(titleElem);
+      parent.appendChild(detailsElem);
+      parent.appendChild(text);
+
+      //appends parent elem to page
+      document.getElementById('content').appendChild(parent);
+
+    }
+  });
+  randomReq.open("GET", "http://www.reddit.com/r/movies.json");
+  randomReq.send();
 
 
 // when "Get the app" is clicked
 // create an xhr get request to http://www.reddit.com/r/ANOTHER_SUBBREDDIT.json
 
+let getAppMenu = document.getElementById('getTheApp');
 
+let getAppReq = new XMLHttpRequest();
+  getAppReq.addEventListener('load', function () {
+    let myBoardsObj = JSON.parse(this.responseText);
+    let myBoardsObjData = myBoardsObj.data.children;
 
+    for (var i = 0; i < myBoardsObjData.length; i++) {
 
+      //create content box element
+      let parent = contentBox();
 
+      //creates elements with data in them
+      let imgElem = imageBox(myBoardsObjData[i].data.url);
+      let titleElem = titleBox(myBoardsObjData[i].data.title);
+      let detailsElem = detailsBox(myBoardsObjData[i].data.author);
+      let text = textSnip(myBoardsObjData[i].data.permalink);
 
+      //append elements
+      parent.appendChild(imgElem);
+      parent.appendChild(titleElem);
+      parent.appendChild(detailsElem);
+      parent.appendChild(text);
+
+      //appends parent elem to page
+      document.getElementById('content').appendChild(parent);
+
+    }
+  });
+  getAppReq.open("GET", "http://www.reddit.com/r/KittenMittens.json");
+  getAppReq.send();
 
 
 

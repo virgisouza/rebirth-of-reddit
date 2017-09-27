@@ -21,14 +21,21 @@ body {
   }
 }
 
-
 #articleTitleBox {
   font-family: 'Oswald', sans-serif;
+  font-size: 12px;
+  text-align: left;
 }
 
 #detailsBox {
   font-family: 'Oswald', sans-serif;
+  font-size: 12px;
+  text-align: left;
 }
+
+#imageBox {
+  background-size: cover;
+  }
 
 
 //mobile
@@ -45,15 +52,24 @@ body {
     border-style: solid;
     display: block;
     margin: auto;
-    height: 400px;
-    width: 300px;
+    height: 200px;
+    width: 100px;
+    padding: 10px;
 
-    #textSnipBox {
-      background-color: pink;
-      height: 60px;
-      width: 300px;
+
+     #articleTitleBox {
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+     #textSnipBox {
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+    }
+
+    #imageBox {
+      align-content: center;
     }
 
   }
@@ -65,20 +81,30 @@ body {
   #content {
   background-image: url(/assets/bg.jpg);
   background-size: cover;
-  max-width: 600px;
+  max-width: 400px;
   height: 800px;
+  padding: 40px;
     }
   .contentBox {
     border-style: solid;
     background-color: white;
     display: block;
     margin: auto;
-    height: 400px;
-    width: 300px;
+    // height: 400px;
+    // width: 300px;
 
+     #articleTitleBox {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     #textSnipBox {
+      overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+    #imageBox {
+
     }
   }
 };
@@ -96,12 +122,21 @@ body {
     background-color: white;
     display: block;
     margin: auto;
-    height: 400px;
+    height: 300px;
     width: 300px;
 
+    #articleTitleBox {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     #textSnipBox {
+      overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+    #imageBox {
+
     }
   }
 };
